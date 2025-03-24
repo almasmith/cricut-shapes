@@ -8,6 +8,11 @@
 import Foundation
 import SwiftData
 
+// I generally like to split my application into presentation and data layers with the data layer generally
+// being responsible for persistence and ingestion (getting data from backend). If the complexity of the application
+// grows significantly and not all logic is encapsulated on a backend, then I'll also add an application layer
+// that handles business/application logic that isn't directly related to data transport/storage.
+
 enum DrawPath: String {
     case circle
     case square

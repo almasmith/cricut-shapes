@@ -18,6 +18,8 @@ struct CirclesView: View {
 
     var body: some View {
         
+        // Using the reader here so that we can take full advantage of the iPad
+        // screen real estate.
         GeometryReader { geometry in
             let columns = Int(geometry.size.width / 120)
             let layout = Array(repeating: GridItem(.fixed(100), spacing: 10), count: columns)

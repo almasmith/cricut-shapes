@@ -7,6 +7,7 @@
 
 import SwiftData
 
+// Used primarily for #Previews
 struct SampleData {
     @MainActor
     static let container: ModelContainer = {

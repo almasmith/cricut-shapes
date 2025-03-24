@@ -8,6 +8,13 @@
 import SwiftUI
 import SwiftData
 
+// I've recnetly started moving away from MVVM. Mostly to leverage
+// what Apple is providing us to simplify our workflow. However, in
+// honesty this has primarily been on my own smaller scale projects
+// and I don't have direct experience with how well this might scale.
+// At my last job, we were still using MVVM (albeit a modified version)
+// extensively.
+
 struct ShapesView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Shape.order) private var shapes: [Shape]

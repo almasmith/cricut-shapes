@@ -10,6 +10,7 @@ import SwiftUI
 // I had created this because my original implementation used a plain list that allowed swipe to delete.
 // However, after revisiting the requirements, I noticed that while it said the UI did not have to look
 // identical, it did explicityly specify a grid.
+
 struct ShapeInfoView: View {
     var shape: Shape
     
@@ -38,6 +39,10 @@ struct ShapeInfoView: View {
         }
     }
 }
+
+// We extend shape here instead of within it's own implementation
+// so that the data of what a shape is doesn't need to know anything
+// about SwiftUI
 
 extension Shape {
     // A view to render for our shapes

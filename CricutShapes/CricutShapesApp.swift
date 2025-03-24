@@ -12,7 +12,7 @@ import SwiftData
 struct CricutShapesApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Shape.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +25,11 @@ struct CricutShapesApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationSplitView {
+                ShapesView()
+            } detail: {
+                CirclesView()
+            }
         }
         .modelContainer(sharedModelContainer)
     }

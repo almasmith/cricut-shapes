@@ -23,4 +23,13 @@ struct ShapeButtonAPITests {
         #expect(drawPaths.contains("square"))
         #expect(drawPaths.contains("triangle"))
     }
+    
+    @Test func testAPIv2() async throws {
+        let shapeButtonNames = try await ShapeButtonAPI.shapeButtonNamesv2()
+        let drawPaths = shapeButtonNames.map(\.drawPath)
+        #expect(drawPaths.contains("circle"))
+        #expect(drawPaths.contains("square"))
+        #expect(drawPaths.contains("triangle"))
+        #expect(drawPaths.contains("box"))
+    }
 }

@@ -17,6 +17,7 @@ enum DrawPath: String {
     case circle
     case square
     case triangle
+    case box
 }
 
 @Model

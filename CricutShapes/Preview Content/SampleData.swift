@@ -35,7 +35,8 @@ struct SampleData {
         .init(drawPath: .square, order: 9),
         .init(drawPath: .triangle, order: 10),
         .init(drawPath: .circle, order: 11),
-        .init(drawPath: .square, order: 12)
+        .init(drawPath: .square, order: 12),
+        .init(drawPath: .box, order: 13)
     ]
 }
 

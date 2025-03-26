@@ -57,6 +57,7 @@ extension Shape {
                 path.addLine(to: .init(x: 0, y: 100))
                 path.closeSubpath()
             }.fill(Color.green)
+            case .box: Rectangle().stroke(.red)
             default:
                 EmptyView()
             }

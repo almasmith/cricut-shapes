@@ -16,5 +16,6 @@ struct ShapeButtonTests {
         #expect(drawPaths.contains(.circle))
         #expect(drawPaths.contains(.square))
         #expect(drawPaths.contains(.triangle))
+        #expect(drawPaths.contains(.box))
     }
 }

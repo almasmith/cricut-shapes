@@ -46,10 +46,31 @@ enum APIError: Error {
 
 struct ShapeButtonAPI {
     private static let endpoint = "https://staticcontent.cricut.com/static/test/shapes_001.json"
-    
+    private static let endpointv2 = "https://staticcontent.cricut.com/static/test/tap_shapes_001.json"
+
     @discardableResult
     static func shapeButtonNames() async throws -> [ButtonName] {
         if let url = URL(string: endpoint) {
+            var data: Data?
+            do {
+                (data, _) = try await URLSession.shared.data(from: url)
+            } catch {
+                throw APIError.networkError(error)
+            }
+            do {
+                let buttons = try JSONDecoder().decode(Buttons.self, from: data!)
+                return buttons.buttons
+            } catch {
+                throw APIError.decodingError(error)
+            }
+        } else {
+            throw APIError.invalidURL
+        }
+    }
+    
+    @discardableResult
+    static func shapeButtonNamesv2() async throws -> [ButtonName] {
+        if let url = URL(string: endpointv2) {
             var data: Data?
             do {
                 (data, _) = try await URLSession.shared.data(from: url)

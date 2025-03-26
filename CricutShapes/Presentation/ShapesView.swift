@@ -35,8 +35,11 @@ struct ShapesView: View {
                     shape.view
                         .overlay {
                             Text(shape.order.description)
-                                .foregroundStyle(.white)
+                                .foregroundStyle(shape.drawPath == DrawPath.box.rawValue ? .black : .white)
                                 .offset(shape.drawPath == DrawPath.triangle.rawValue ? .init(width: 0, height: 12) : .zero)
+                        }
+                        .onTapGesture {
+                            deleteShape(shape: shape)
                         }
                 }
             }
@@ -82,12 +85,10 @@ struct ShapesView: View {
         }
     }
 
-    private func addShape(path: DrawPath) {
-        withAnimation {
-            let order = (shapes.last?.order ?? 0) + 1
-            let newItem = Shape(drawPath: path, order: order)
-            modelContext.insert(newItem)
-        }
+    func addShape(path: DrawPath) {
+        let order = (shapes.last?.order ?? 0) + 1
+        let newItem = Shape(drawPath: path, order: order)
+        modelContext.insert(newItem)
     }
     
     private func clearAll() {
@@ -99,6 +100,12 @@ struct ShapesView: View {
             for index in offsets {
                 modelContext.delete(shapes[index])
             }
+        }
+    }
+    
+    private func deleteShape(shape: Shape) {
+        withAnimation {
+            modelContext.delete(shape)
         }
     }
 }

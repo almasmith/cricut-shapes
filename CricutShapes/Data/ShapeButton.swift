@@ -19,7 +19,7 @@ struct ShapeButton {
     // As application grows, functions like these might move into something like `ShapeRepository`
     // that can encpsulate/hide how data is managed.
     static func fetchAll() async throws -> [ShapeButton] {
-        try await ShapeButtonAPI.shapeButtonNames().map { .fromAPI($0) }
+        try await ShapeButtonAPI.shapeButtonNamesv2().map { .fromAPI($0) }
     }
 }
 
